@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+	<id>distribution</id>
+	<formats>
+		<!-- tar.gz should be prefered to zip because it handles files permissions -->
+		<format>zip</format>
+		<format>dir</format>
+	</formats>
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>/</outputDirectory>
+			<fileMode>644</fileMode>
+			<includes>
+				<include>org.ow2.petals.dsb.distribution:dsb-distribution</include>
+			</includes>
+			<unpack>true</unpack>
+		</dependencySet>
+		<dependencySet>
+			<outputDirectory>/dsb-distribution-1.0/artifacts/components</outputDirectory>
+			<fileMode>644</fileMode>
+			<includes>
+				<include>org.ow2.petals.dsb:*:zip</include>
+				<include>org.petalslink.research.petals:*:zip</include>
+				<include>org.ow2.play:*:zip</include>
+			</includes>
+			<excludes>
+				<exclude>org.ow2.petals.dsb.distribution:dsb-distribution:zip</exclude>
+			</excludes>
+		</dependencySet>
+	</dependencySets>
+</assembly>

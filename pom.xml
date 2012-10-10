@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>play-parent</artifactId>
+		<groupId>org.ow2.play</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.ow2.play</groupId>
+	<artifactId>play-dsb</artifactId>
+	<name>play-dsb</name>
+	<version>1.0-SNAPSHOT</version>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<dsb.version>1.0.0</dsb.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.ow2.petals.dsb.distribution</groupId>
+			<artifactId>dsb-distribution</artifactId>
+			<version>${dsb.version}</version>
+			<type>zip</type>
+		</dependency>
+		<dependency>
+			<groupId>org.ow2.petals.dsb</groupId>
+			<artifactId>petals-bc-soap</artifactId>
+			<version>${dsb.version}</version>
+			<type>zip</type>
+		</dependency>
+		<dependency>
+			<groupId>org.ow2.play</groupId>
+			<artifactId>play-dsb-wsn-package</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>zip</type>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-assembly</id>
+						<configuration>
+							<finalName>${project.artifactId}</finalName>
+							<appendAssemblyId>false</appendAssemblyId>
+							<descriptors>
+								<descriptor>
+									src/main/assembly/distribution.xml
+								</descriptor>
+							</descriptors>
+						</configuration>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>ow2.release</id>
+			<name>OW2 Repository</name>
+			<url>http://repository.ow2.org/nexus/content/repositories/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>ow2.snapshot</id>
+			<name>OW2 Snap Repository</name>
+			<url>http://repository.ow2.org/nexus/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<scm>
+		<connection>scm:git:git@github.com:play-project/play-dsb.git</connection>
+		<developerConnection>scm:git:git@github.com:play-project/play-dsb.git</developerConnection>
+		<url>http://github.com/play-project/petals-dsb</url>
+	</scm>
+</project>
