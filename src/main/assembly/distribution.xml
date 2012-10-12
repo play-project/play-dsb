@@ -16,7 +16,7 @@
 			<unpack>true</unpack>
 		</dependencySet>
 		<dependencySet>
-			<outputDirectory>/dsb-distribution-1.0/artifacts/components</outputDirectory>
+			<outputDirectory>/dsb-distribution-1.0.0/artifacts/components</outputDirectory>
 			<fileMode>644</fileMode>
 			<includes>
 				<include>org.ow2.petals.dsb:*:zip</include>
